@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">mapME</string>
+    <string name="title_activity_display_map">DisplayMapActivity</string>
+</resources>
