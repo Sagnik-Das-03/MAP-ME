@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mapme.model.Place
 import com.example.mapme.model.UserMap
+const val EXTRA_USER_MAP = "EXTRA_USER_MAP"
 private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity() {
     private lateinit var rvMaps : RecyclerView
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity() {
                 Log.i(TAG, "on item click $position")
                 //When user taps on view in recycler view, navigates to new activity
                 val intent = Intent(this@MainActivity, DisplayMapActivity::class.java)
+                intent.putExtra(EXTRA_USER_MAP, userMaps[position])
                 startActivity(intent)
             }
 
