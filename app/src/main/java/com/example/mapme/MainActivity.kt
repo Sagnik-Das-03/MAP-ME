@@ -1,21 +1,40 @@
 package com.example.mapme
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mapme.model.Place
 import com.example.mapme.model.UserMap
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlin.contracts.contract
+
+private const val REQUEST_CODE = 441
 const val EXTRA_USER_MAP = "EXTRA_USER_MAP"
+const val EXTRA_MAP_TITLE = "EXTRA_MAP_TITLE"
 private const val TAG = "MainActivity"
+
 class MainActivity : AppCompatActivity() {
     private lateinit var rvMaps : RecyclerView
-    override fun onCreate(savedInstanceState: Bundle?) {
+    private lateinit var fabCreateMap : FloatingActionButton
+    private val  contract = registerForActivityResult(Contract()){
+        startActivity(intent)
+    }
+
+        override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // View binding
         rvMaps = findViewById(R.id.rvMaps)
+        fabCreateMap = findViewById(R.id.fabCreateMap)
+
         val userMaps = generateSampleData()
         //Set layout manager on the recycler view
         rvMaps.layoutManager = LinearLayoutManager(this)
@@ -30,7 +49,16 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+
+        fabCreateMap.setOnClickListener {
+            Log.i(TAG, "Tap on fab")
+            val intent = Intent(this@MainActivity,CreateMapActivity::class.java)
+            contract.launch(intent)
+        }
+
     }
+
+
 
     private fun generateSampleData(): List<UserMap> {
         return listOf(

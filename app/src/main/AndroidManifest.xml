@@ -29,7 +29,10 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="${MAPS_API_KEY}" />
 
-
+        <activity
+            android:name=".CreateMapActivity"
+            android:exported="false"
+            android:label="@string/title_activity_create_map" />
         <activity
             android:name=".DisplayMapActivity"
             android:exported="false"
