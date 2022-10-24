@@ -52,9 +52,12 @@ class DisplayMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val boundsBuilder = LatLngBounds.builder()
         for(place in userMap.places) {
-            val latLng = LatLng(place.latitude,place.longitude)
-            boundsBuilder.include(latLng)
-            mMap.addMarker(MarkerOptions().position(latLng).title(place.title).snippet(place.description))
+            val latLng = place?.let { LatLng(it.latitude,place.longitude) }
+            if (latLng != null) {
+                boundsBuilder.include(latLng)
+            }
+            latLng?.let { MarkerOptions().position(it).title(place.title).snippet(place.description) }
+                ?.let { mMap.addMarker(it) }
         }
         mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(boundsBuilder.build(), 1000,1000,0))
     }
