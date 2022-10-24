@@ -4,4 +4,6 @@
     <string name="title_activity_create_map">CreateMapActivity</string>
     <string name="etTitle">Title</string>
     <string name="etNAme">Description</string>
+    <string name="dialogCreateMap">Title</string>
+    <string name="Save">Save</string>
 </resources>

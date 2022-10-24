@@ -2,12 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mainLayout"
+    android:id="@+id/mainMapTitleLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/dialogLayout"
+        android:id="@+id/mapTitleLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -19,25 +19,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/etTitle"
+            android:id="@+id/etMapTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/etTitle"
+            android:hint="@string/dialogCreateMap"
             android:inputType="textPersonName"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:textSize="24sp" />
-
-        <EditText
-            android:id="@+id/etDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/etNAme"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

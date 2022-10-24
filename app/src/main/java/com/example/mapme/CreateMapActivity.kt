@@ -24,6 +24,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.example.mapme.databinding.ActivityCreateMapBinding
 import com.example.mapme.model.Place
 import com.example.mapme.model.UserMap
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.model.Marker
 import com.google.android.material.snackbar.Snackbar
 
@@ -99,9 +100,16 @@ class CreateMapActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.setOnMapLongClickListener { LatLng->
             Log.i(TAG, "onMapLongClickListener")
             showAlertDialog(LatLng)
-
         }
-
+//        Add a dummy marker location
+//        Zoom Levels
+//        1:World
+//        5:Landmass/Continent
+//        10:City
+//        15:Streets
+//        20:Building
+        val westBengal = LatLng(23.004612091135986, 86.96060591571582)
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(westBengal,8f))
     }
 
     private fun showAlertDialog(latLng: LatLng) {
