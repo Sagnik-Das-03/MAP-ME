@@ -71,7 +71,7 @@ class CreateMapActivity : AppCompatActivity(), OnMapReadyCallback {
             } } }
             val userMap = intent.getStringExtra(EXTRA_MAP_TITLE)?.let { UserMap(it,places) }
             val data = Intent(this@CreateMapActivity, MainActivity::class.java)
-            data.putExtra(EXTRA_MAP_TITLE,userMap)
+            data.putExtra(EXTRA_USER_MAP,userMap)
             setResult(RESULT_OK, data)
             finish()
             return true

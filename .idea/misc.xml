@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/sagni/AndroidStudioProjects/mapME/app/src/main/res/layout/activity_create_map.xml" value="0.25" />
         <entry key="..\:/Users/sagni/AndroidStudioProjects/mapME/app/src/main/res/layout/activity_display_map.xml" value="0.1078125" />
         <entry key="..\:/Users/sagni/AndroidStudioProjects/mapME/app/src/main/res/layout/activity_main.xml" value="0.23822463768115942" />
         <entry key="..\:/Users/sagni/AndroidStudioProjects/mapME/app/src/main/res/layout/dialog_create_place.xml" value="0.25" />

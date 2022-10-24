@@ -39,8 +39,8 @@ class MainActivity : AppCompatActivity() {
                 if (result.resultCode == Activity.RESULT_OK && result.data != null) {
                     val data = result.data
                     // Do operations
-                    val userMap : UserMap= data!!.getSerializableExtra(EXTRA_MAP_TITLE) as UserMap
-                    Log.i(TAG,"On click save ${userMap.title}")
+                    val userMap : UserMap= data!!.getSerializableExtra(EXTRA_USER_MAP) as UserMap
+                    Log.i(TAG,"onActivityResult with new map title ${userMap.title}")
 
                 }
 
