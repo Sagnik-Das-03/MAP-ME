@@ -88,25 +88,6 @@ class MainActivity : AppCompatActivity() {
         activityResultLauncher.launch(intent)
     }
 
-//    private fun getDataFile(context: Context) : File{
-//        Log.i(TAG,"Getting file from directory ${context.filesDir}")
-//        return File(context.filesDir, FILENAME)
-//    }
-//
-//    private fun serializeUserMaps(context: Context, userMaps: List<UserMap>){
-//        Log.i(TAG, "serializeUserMaps")
-//        ObjectOutputStream(FileOutputStream(getDataFile(context))).use { it.writeObject(userMaps) }
-//    }
-//
-//    private fun deserializeUserMaps(context: Context) :List<UserMap>{
-//        Log.i(TAG,"deserializeUserMaps")
-//        val dataFile = getDataFile(context)
-//        if(dataFile.exists()){
-//            Log.i(TAG,"Data file does not exists")
-//            return emptyList()
-//        }
-//        ObjectInputStream(FileInputStream(dataFile)).use { return it.readObject() as List<UserMap> }
-//    }
 
     private fun serializeUserMaps(context: Context, userMaps: List<UserMap>) {
         Log.i(TAG, "serializeUserMaps")
