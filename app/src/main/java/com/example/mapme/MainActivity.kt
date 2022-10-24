@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var fabCreateMap: FloatingActionButton
     private lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
 
+
     companion object {
         val resultCode1 by lazy { 1200 }
 
@@ -35,13 +36,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         activityResultLauncher =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result->
-                // There are no request codes
-
                 if (result.resultCode == Activity.RESULT_OK && result.data != null) {
                     val data = result.data
                     // Do operations
-                    val userMap : UserMap= intent.getSerializableExtra(EXTRA_MAP_TITLE) as UserMap
+                    val userMap : UserMap= data!!.getSerializableExtra(EXTRA_MAP_TITLE) as UserMap
                     Log.i(TAG,"On click save ${userMap.title}")
+
                 }
 
             }
@@ -77,10 +77,13 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun processMap(){
 
+    }
 
     private fun openSecondActivityForResult() {
-        val intent = Intent(this@MainActivity, CreateMapActivity::class.java)
+        val intent = Intent(this, CreateMapActivity::class.java)
+        intent.putExtra(EXTRA_MAP_TITLE,"new map name")
         activityResultLauncher.launch(intent)
     }
 
