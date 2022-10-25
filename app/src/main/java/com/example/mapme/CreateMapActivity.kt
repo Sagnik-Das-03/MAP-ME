@@ -23,6 +23,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
@@ -78,6 +79,28 @@ class CreateMapActivity : AppCompatActivity(), OnMapReadyCallback {
             finish()
             return true
         }
+        when (item.itemId) {
+            R.id.normal_map -> {
+                Log.i(TAG,"Tapped on normal map!")
+                mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
+                return true
+            }
+            R.id.hybrid_map -> {
+                Log.i(TAG,"Tapped on Hybrid map!")
+                mMap.mapType = GoogleMap.MAP_TYPE_HYBRID
+                return true
+            }
+            R.id.satellite_map -> {
+                Log.i(TAG,"Tapped on normal map!")
+                mMap.mapType = GoogleMap.MAP_TYPE_SATELLITE
+                return true
+            }
+            R.id.terrain_map -> {
+                Log.i(TAG,"Tapped on normal map!")
+                mMap.mapType = GoogleMap.MAP_TYPE_TERRAIN
+                return true
+            }
+        }
 
         return super.onOptionsItemSelected(item)
     }
@@ -129,7 +152,13 @@ class CreateMapActivity : AppCompatActivity(), OnMapReadyCallback {
                 return@setOnClickListener
             }
 
-            val marker = mMap.addMarker(MarkerOptions().position(latLng).title(title).snippet(description))
+            val marker = mMap.addMarker(MarkerOptions().position(latLng)
+                .title(title)
+                .snippet(description)
+                .draggable(true)
+                .anchor(0.5f, 0.5f)
+                .rotation(20.0f)
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN)))
 
             if (marker != null) {
                 markers.add(marker)

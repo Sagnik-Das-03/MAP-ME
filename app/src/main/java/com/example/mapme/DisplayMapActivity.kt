@@ -3,6 +3,9 @@ package com.example.mapme
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -12,6 +15,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.example.mapme.databinding.ActivityDisplayMapBinding
 import com.example.mapme.model.UserMap
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLngBounds
 
 private const val TAG = "DisplayMapActivity"
@@ -36,6 +40,37 @@ class DisplayMapActivity : AppCompatActivity(), OnMapReadyCallback {
         mapFragment.getMapAsync(this)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_display_map,menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.normal_map -> {
+                Log.i(TAG,"On display map Tapped on normal map!")
+                mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
+                return true
+            }
+            R.id.hybrid_map -> {
+                Log.i(TAG,"On display map Tapped on Hybrid map!")
+                mMap.mapType = GoogleMap.MAP_TYPE_HYBRID
+                return true
+            }
+            R.id.satellite_map -> {
+                Log.i(TAG,"On display map Tapped on normal map!")
+                mMap.mapType = GoogleMap.MAP_TYPE_SATELLITE
+                return true
+            }
+            R.id.terrain_map -> {
+                Log.i(TAG,"On display map Tapped on normal map!")
+                mMap.mapType = GoogleMap.MAP_TYPE_TERRAIN
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -56,9 +91,17 @@ class DisplayMapActivity : AppCompatActivity(), OnMapReadyCallback {
             if (latLng != null) {
                 boundsBuilder.include(latLng)
             }
-            latLng?.let { MarkerOptions().position(it).title(place.title).snippet(place.description) }
+            latLng?.let { MarkerOptions().position(it)
+                .title(place.title)
+                .snippet(place.description)
+                .draggable(false)
+                .anchor(0.5f, 0.5f)
+                .rotation(20.0f)
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN)) }
                 ?.let { mMap.addMarker(it) }
         }
-        mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(boundsBuilder.build(), 1000,1000,0))
+        mMap.uiSettings.setAllGesturesEnabled(true)
+        mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(boundsBuilder.build(),1000,1000,20))
+
     }
 }
