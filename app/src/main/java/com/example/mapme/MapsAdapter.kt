@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mapme.model.UserMap
 private const val TAG = "MapsAdapter"
-class MapsAdapter(val context: Context, val userMaps: List<UserMap>, val onClickListener: OnClickListener) : RecyclerView.Adapter<MapsAdapter.ViewHolder>() {
+class MapsAdapter(private val context: Context, private val userMaps: List<UserMap>, private val onClickListener: OnClickListener) : RecyclerView.Adapter<MapsAdapter.ViewHolder>() {
 
     interface OnClickListener{
         fun onItemClick(position: Int)
