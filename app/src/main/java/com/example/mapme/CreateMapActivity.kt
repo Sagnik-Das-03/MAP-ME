@@ -28,6 +28,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.snackbar.Snackbar
+import kotlin.math.max
 
 
 private const val TAG = "CreateMapActivity"
@@ -182,7 +183,7 @@ class CreateMapActivity : AppCompatActivity(), OnMapReadyCallback {
             override fun run() {
                 val elapsed = SystemClock.uptimeMillis() - start
                 // Calculate t for bounce based on elapsed time
-                val t = Math.max(
+                val t = max(
                     1 - interpolator.getInterpolation(elapsed.toFloat() / duration), 0f)
                 // Set the anchor
                 marker.setAnchor(0.5f, 1.0f + 14 * t)

@@ -17,7 +17,7 @@ class MapsAdapter(private val context: Context, private val userMaps: List<UserM
         fun onItemLongClick(position: Int)
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-       val view = LayoutInflater.from(context).inflate(android.R.layout.simple_list_item_1,parent,false)
+       val view = LayoutInflater.from(context).inflate(R.layout.item_user_map,parent,false)
         return ViewHolder(view)
     }
 
@@ -32,7 +32,7 @@ class MapsAdapter(private val context: Context, private val userMaps: List<UserM
             return@setOnLongClickListener true
         }
 
-        val textViewTitle = holder.itemView.findViewById<TextView>(android.R.id.text1)
+        val textViewTitle = holder.itemView.findViewById<TextView>(R.id.tvMapTitle)
          textViewTitle.text = userMap.title
 
     }
