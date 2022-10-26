@@ -16,7 +16,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
-import com.example.mapme.model.Place
 import com.example.mapme.model.UserMap
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.io.*
@@ -31,10 +30,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
     private lateinit var userMaps: MutableList<UserMap>
     private lateinit var mapsAdapter: MapsAdapter
-    private lateinit var places:List<Place>
 
 
-    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -45,7 +42,6 @@ class MainActivity : AppCompatActivity() {
 
 
         userMaps =deserializeUserMaps(this).toMutableList()
-
 
         //Set layout manager on the recycler view
         rvMaps.layoutManager = LinearLayoutManager(this)
