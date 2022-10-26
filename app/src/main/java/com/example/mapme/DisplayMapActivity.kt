@@ -100,7 +100,6 @@ class DisplayMapActivity : AppCompatActivity(), OnMapReadyCallback {
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN)) }
                 ?.let { mMap.addMarker(it) }
         }
-        mMap.uiSettings.setAllGesturesEnabled(true)
         mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(boundsBuilder.build(),1000,1000,20))
 
     }

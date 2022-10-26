@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mapme.model.Place
 import com.example.mapme.model.UserMap
 private const val TAG = "MapsAdapter"
 class MapsAdapter(private val context: Context, private val userMaps: List<UserMap>, private val onClickListener: OnClickListener) : RecyclerView.Adapter<MapsAdapter.ViewHolder>() {
+
 
     interface OnClickListener{
         fun onItemClick(position: Int)
@@ -34,7 +36,8 @@ class MapsAdapter(private val context: Context, private val userMaps: List<UserM
 
         val textViewTitle = holder.itemView.findViewById<TextView>(R.id.tvMapTitle)
          textViewTitle.text = userMap.title
-
+        val placeOnMap = holder.itemView.findViewById<TextView>(R.id.tvPlaces)
+         placeOnMap.text = userMap.places.size.toString()
     }
 
     override fun getItemCount(): Int = userMaps.size
