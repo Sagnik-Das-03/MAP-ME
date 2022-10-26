@@ -29,7 +29,10 @@ The following **additional functionalities** are also implemented:
 
 Here's a walk through of implemented user stories:
 
-<img src='' title='Video Walk Through' width='' alt='Video Walk Through' />
+<p float="middle">
+    <img src='' title='mainscreen' width='300' alt='home screen' />
+    <img src='' title='Walkthrough' width='240' alt='Video Walkthrough' />
+ </p>
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
