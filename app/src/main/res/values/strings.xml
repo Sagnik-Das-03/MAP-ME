@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">mapME</string>
     <string name="title_activity_display_map">DisplayMapActivity</string>
     <string name="title_activity_create_map">CreateMapActivity</string>
     <string name="etTitle">Title</string>
@@ -12,4 +11,5 @@
     <string name="terrain_map">Terrain Map</string>
     <string name="mapSize">Number of Markers on Map</string>
     <string name="seach">Search</string>
+    <string name="app_name">MAP-ME</string>
 </resources>
