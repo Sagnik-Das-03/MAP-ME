@@ -22,7 +22,7 @@ The following **additional functionalities** are also implemented:
 * [x] The numbers of user-defined makers on the map is shown below the maps
 * [x] Added transition animations between activities using animatoo library
 * [x] Added various map types like Terrain map, Satellite maps and Hybrid maps on both Create Map and Display Map Screen
-* [x] Stores all the maps created in a local file
+* [x] Stores all the created maps in a local file
 
 
 ## Video Walk Through
