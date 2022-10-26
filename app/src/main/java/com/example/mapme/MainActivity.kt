@@ -15,7 +15,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mapme.model.Place
+import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.example.mapme.model.UserMap
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.io.*
@@ -55,6 +55,7 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(this@MainActivity, DisplayMapActivity::class.java)
                 intent.putExtra(EXTRA_USER_MAP, userMaps[position])
                 startActivity(intent)
+                Animatoo.animateSlideLeft(this@MainActivity)
             }
 
             override fun onItemLongClick(position: Int) {
