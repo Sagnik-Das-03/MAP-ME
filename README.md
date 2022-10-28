@@ -36,7 +36,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 ## Features
 * Pure Kotlin
 * Multi Screen
-* Animatoo library
+* Used Animatoo library
 
 
 ## License
