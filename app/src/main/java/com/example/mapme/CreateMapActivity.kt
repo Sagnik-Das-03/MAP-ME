@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.os.SystemClock
 import android.util.Log
 import android.view.LayoutInflater
@@ -171,7 +172,7 @@ class CreateMapActivity : AppCompatActivity(), OnMapReadyCallback {
     }
     private fun dropPinEffect(marker: Marker) {
         // Handler allows us to repeat a code block after a specified delay
-        val handler = Handler()
+        val handler = Handler(Looper.getMainLooper())
         val start = SystemClock.uptimeMillis()
         val duration: Long = 1500
 
