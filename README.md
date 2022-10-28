@@ -22,14 +22,17 @@ The following **additional functionalities** are also implemented:
 * [x] The numbers of user-defined makers on the map is shown below the maps
 * [x] Added transition animations between activities using animatoo library
 * [x] Added various map types like Terrain map, Satellite maps and Hybrid maps on both Create Map and Display Map Screen
-* [x] Stores all the maps created in a local file
+* [x] Stores all the created maps in a local file
 
 
 ## Video Walk Through
 
 Here's a walk through of implemented user stories:
 
-<img src='' title='Video Walk Through' width='' alt='Video Walk Through' />
+<p float="middle">
+    <img src='https://github.com/Sagnik-Das-03/mapMe/blob/master/mapme_homescreen.png' title='mainscreen' width='300' alt='Home Screen' />
+    <img src='' title='Walk Through' width='240' alt='Video Walkthrough' />
+ </p>
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
