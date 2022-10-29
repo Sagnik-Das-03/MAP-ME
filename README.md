@@ -31,7 +31,7 @@ Here's a walk through of implemented user stories:
 
 <p float="middle">
     <img src='https://github.com/Sagnik-Das-03/mapMe/blob/master/mapme_homescreen.png' title='mainscreen' width='300' alt='Home Screen' />
-    <img src='' title='Walk Through' width='240' alt='Video Walkthrough' />
+    <img src='https://github.com/Sagnik-Das-03/mapMe/blob/master/mapme.gif' title='Walk Through' width='240' alt='Video Walkthrough' />
  </p>
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
