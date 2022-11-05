@@ -1,11 +1,18 @@
 package com.example.mapme
 
+import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.location.Location
+import android.location.LocationManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.os.SystemClock
+import android.provider.Settings
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
@@ -16,10 +23,14 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.example.mapme.databinding.ActivityCreateMapBinding
 import com.example.mapme.model.Place
 import com.example.mapme.model.UserMap
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -38,6 +49,8 @@ class CreateMapActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityCreateMapBinding
     private var markers: MutableList<Marker> = mutableListOf()
+    private lateinit var lastLocation: Location
+    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +68,7 @@ class CreateMapActivity : AppCompatActivity(), OnMapReadyCallback {
                 .setActionTextColor(ContextCompat.getColor(this, android.R.color.white))
                 .show()
         }
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -134,8 +148,92 @@ class CreateMapActivity : AppCompatActivity(), OnMapReadyCallback {
 //        10:City
 //        15:Streets
 //        20:Building
-        val westBengal = LatLng(23.004612091135986, 86.96060591571582)
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(westBengal,8f))
+//        val westBengal = LatLng(23.004612091135986, 86.96060591571582)
+//        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(westBengal,8f))
+        mMap.uiSettings.isZoomControlsEnabled = true
+        setUpMap()
+    }
+
+
+    @SuppressLint("MissingPermission")
+    private fun setUpMap()
+    {
+        if (checkPermissions())
+        {
+            if (isLocationEnabled())
+            {
+                //Final location latitude and longitude
+                mMap.isMyLocationEnabled = true
+                fusedLocationProviderClient.lastLocation.addOnSuccessListener(this) { location ->
+                    if (location != null) {
+                        lastLocation = location
+                        val currentLatLng = LatLng(location.latitude, location.longitude)
+                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 12f))
+                    }
+                }
+            }
+            else
+            {
+                //Open settings to enable location manually
+                Toast.makeText(this, "Turn on Location", Toast.LENGTH_LONG).show()
+                val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
+                startActivity(intent)
+                Animatoo.animateFade(this)
+                finish()
+            }
+
+        }
+        else
+        {
+            // Request permission here
+            requestPermission()
+        }
+
+    }
+
+    companion object{
+        private const val PERMISSION_REQUEST_ACCESS_LOCATION = 100
+    }
+    private fun isLocationEnabled(): Boolean{
+        val locationManager: LocationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
+                || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
+    }
+    private fun requestPermission() {
+        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION), PERMISSION_REQUEST_ACCESS_LOCATION)
+    }
+
+
+    private fun checkPermissions() : Boolean{
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED
+            && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED)
+        {
+            return true
+        }
+        return false
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray,
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        if(requestCode == PERMISSION_REQUEST_ACCESS_LOCATION)
+        {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                Toast.makeText(applicationContext, "Permission Granted", Toast.LENGTH_LONG).show()
+                setUpMap()
+            }
+            else
+            {
+                Toast.makeText(applicationContext, "Permission Denied", Toast.LENGTH_LONG).show()
+
+            }
+
+        }
     }
 
     private fun showAlertDialog(latLng: LatLng) {
