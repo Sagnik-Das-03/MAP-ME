@@ -52,33 +52,8 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
  
 * [x] Set up Android Studio
 
-
-* [x] Download the project zip file 
-<a href='### Method 1:
-* [x] Download Android Studio 
-
-* [x] Click the icon to download
- 
-<p align="left">
-   <a href='https://developer.android.com/studio?gclid=Cj0KCQjwqoibBhDUARIsAH2OpWi2VQ6w50tP7G8OeiMmIt9gK13cN1et0AU5tZ1O2KnjsOxrTWpP0aAr7TEALw_wcB&gclsrc=aw.ds'><img         width="150" src='https://github.com/Sagnik-Das-03/TIPPER/blob/master/studioicon.jpeg' /></a>
-</p>
- 
-* [x] Set up Android Studio
-
-
 * [x] Download the project zip file 
 <a href='https://github.com/Sagnik-Das-03/MAP-ME/archive/refs/heads/master.zip'>Click here to Download Zip</a>
-
-* [x] Extract it and open in android studio
-
-* [x] Run the app from android studio 
-
-### Method 2:
-* [x] Download the apk
-<a href='https://drive.google.com/file/d/11rvwZD2m7LaRsvMaoyugFC0UmNZx4zDD/view?usp=sharing'>Click here to Download Apk</a>
-* [x] Install the apk on your android device
-* [x] Open the app '>Click here to Download Zip</a>
-
 * [x] Extract it and open in android studio
 * [x] Get your Google Maps Api Key from 
 <a href = 'https://developers.google.com/maps/documentation/android-sdk/get-api-key'>Click here to get the Google Maps Api Key</a>
@@ -86,12 +61,13 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
         Once you have your API key (it starts with "AIza"), define a new property in your
              project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
              "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
-    Add this ${MAPS_API_KEY} in the <meta-data> tag of androidManifest file
+    Add this ${MAPS_API_KEY} in the <meta-data> tag of androidManifest file like below image
     <p float="middle">
     <img src='https://github.com/Sagnik-Das-03/MAP-ME/blob/master/manifest.png' title='mainscreen' width='300' alt='home screen' />
  </p>
 
 * [x] Run the app from android studio 
+
 
 ### Method 2:
 * [x] Download the apk
