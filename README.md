@@ -70,8 +70,8 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 
 ### Method 2:
-* [x] Download the apk
-<a href='https://drive.google.com/file/d/15nNfyJTHydmgV1mMMjcb7LvlULSer78K/view?usp=share_link'>Click here to Download Apk</a>
+* [x] Download the apk(Note: that Apk might not be up to date)
+<a href='https://drive.google.com/file/d/1HDV2Jns4relVrfeENLpdd_2_-3VjVPsW/view?usp=share_link'>Click here to Download Apk</a>
 * [x] Install the apk on your android device
 * [x] Open the app 
     
